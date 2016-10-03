@@ -9,7 +9,7 @@ set termencoding=utf-8
 set nocompatible
 
 " enable pathogen for plug-in management
-call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
 call pathogen#helptags()
 
 " use indentation of previous line
