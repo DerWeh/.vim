@@ -83,14 +83,14 @@ let g:tagbar_sort = 0
 " Remove highlight from searchresults
 map <C-n> :nohl<CR>
 
-" Move between windows with Ctrl+[h,j,k,l] 
+" Move between windows with Ctrl+[h,j,k,l]
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
 " Intending codeblocks
-vmap < <gv 
+vmap < <gv
 nmap < <gv
 vmap > >gv
 nmap > >gv
@@ -130,7 +130,10 @@ if !exists(":DiffOrig")
             \ | wincmd p | diffthis
 endif
 
-" mine 
+" ariline configuration
+let g:airline#extensions#branch#enabled = 1
+
+" mine
 filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
 set completeopt=menu,preview,longest
