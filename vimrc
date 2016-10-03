@@ -55,6 +55,8 @@ set showcmd
 set incsearch
 " Any search highlights the string matched by the search.
 set hlsearch
+set ignorecase
+set smartcase
 
 
 "" Install OmniCppComplete like described on http://vim.wikia.com/wiki/C++_code_completion
@@ -70,7 +72,7 @@ set hlsearch
 " in normal mode F2 will save the file
 nmap <F2> :w<CR>
 " in insert mode F2 will exit insert, save, enters insert again
-imap <F2> <ESC>:w<CR>i
+imap <F2> <ESC>:w<CR><Space>i
 " toggle paste mode for pasting code without intend
 set pastetoggle=<F3>
 " switch between header/source with F4
