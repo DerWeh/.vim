@@ -48,7 +48,7 @@ set showcmd
 " search string.
 set incsearch
 " Any search highlights the string matched by the search.
-" set hlsearch
+set hlsearch
 
 
 "" Install OmniCppComplete like described on http://vim.wikia.com/wiki/C++_code_completion
@@ -61,25 +61,23 @@ set incsearch
 "" Install DoxygenToolkit from http://www.vim.org/scripts/script.php?script_id=987
 "let g:DoxygenToolkit_authorName="John Doe <john@doe.com>"
 
-" Enhanced keyboard mappings
-"
 " in normal mode F2 will save the file
 nmap <F2> :w<CR>
 " in insert mode F2 will exit insert, save, enters insert again
 imap <F2> <ESC>:w<CR>i
+" toggle paste mode for pasting code without intend
+set pastetoggle=<F3>
 " switch between header/source with F4
 map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 " Toggle tagbar
 map <F8> <Esc>:TagbarToggle<CR>
 " Change sorting order to order of appearance in file
 let g:tagbar_sort = 0
+map <C-n> :nohl<CR>
 
 "" create doxygen comment
 "map <F6> :Dox<CR>
-" build using makeprg with <F7>
-" map <F7> :make<CR>
-" build using makeprg with <S-F7>
-map <S-F7> :make clean all<CR>
+
 " goto definition with F12
 map <F12> <C-]>
 " in diff mode we use the spell check keys for merging
@@ -98,7 +96,6 @@ else
   map <M-Down> ]s
   map <M-Up> [s
 endif
-
 
 if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
