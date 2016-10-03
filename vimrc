@@ -27,6 +27,12 @@ set softtabstop=4
 set expandtab
 " wrap lines at 120 chars. 80 is somewaht antiquated with nowadays displays.
 "" set textwidth=120
+
+" Show whitespace, needs colorscheme defined afterwards
+" MUST be inserted BEFORE the colorscheme command
+"" autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+"" au InsertLeave * match ExtraWhitespace /\s\+$/
+
 " turn syntax highlighting on
 set t_Co=256
 syntax on
