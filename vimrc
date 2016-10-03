@@ -71,6 +71,8 @@ imap <F2> <ESC>:w<CR>i
 map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 " recreate tags file with F5
 map <F5> :!ctags -R –c++-kinds=+p –fields=+iaS –extra=+q .<CR>
+" Toggle tagbar
+map <F8> <Esc>:TagbarToggle<CR>
 "" create doxygen comment
 "map <F6> :Dox<CR>
 " build using makeprg with <F7>
