@@ -28,9 +28,9 @@ set expandtab
 " wrap lines at 120 chars. 80 is somewaht antiquated with nowadays displays.
 "" set textwidth=120
 " turn syntax highlighting on
-set t_Co=256
 syntax on
-" colorscheme wombat256
+" set t_Co=256
+colorscheme wombat256
 "" turn line numbers on
 "set number
 " highlight matching braces
