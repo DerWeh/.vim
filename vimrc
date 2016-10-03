@@ -69,8 +69,6 @@ nmap <F2> :w<CR>
 imap <F2> <ESC>:w<CR>i
 " switch between header/source with F4
 map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
-" recreate tags file with F5
-map <F5> :!ctags -R –c++-kinds=+p –fields=+iaS –extra=+q .<CR>
 " Toggle tagbar
 map <F8> <Esc>:TagbarToggle<CR>
 " Change sorting order to order of appearance in file
