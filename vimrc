@@ -82,6 +82,12 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+" Intending codeblocks
+vmap < <gv 
+nmap < <gv
+vmap > >gv
+nmap > >gv
+
 "" create doxygen comment
 "map <F6> :Dox<CR>
 
