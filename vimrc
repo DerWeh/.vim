@@ -73,7 +73,14 @@ map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 map <F8> <Esc>:TagbarToggle<CR>
 " Change sorting order to order of appearance in file
 let g:tagbar_sort = 0
+" Remove highlight from searchresults
 map <C-n> :nohl<CR>
+
+" Move between windows with Ctrl+[h,j,k,l] 
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
 
 "" create doxygen comment
 "map <F6> :Dox<CR>
