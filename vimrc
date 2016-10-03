@@ -1,14 +1,17 @@
 " VIM Configuration File
-" Description: Optimized for C/C++ development, but useful also for other things.
-" Author: Gerhard Gappmeier
-"
 
 " set UTF-8 encoding
 set enc=utf-8
 set fenc=utf-8
 set termencoding=utf-8
+
 " disable vi compatibility (emulation of old bugs)
 set nocompatible
+
+" enable pathogen for plug-in management
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+
 " use indentation of previous line
 set autoindent
 " use intelligent indentation for C
