@@ -16,3 +16,6 @@
 [submodule "/home/andreas/.vim/bundle/nerdtree"]
 	path = /home/andreas/.vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
+[submodule "bundle/nerdtree-git-plugin"]
+	path = bundle/nerdtree-git-plugin
+	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
