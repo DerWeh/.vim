@@ -132,6 +132,8 @@ endif
 
 " ariline configuration
 let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#branch#vcs_priority = ["git"]
+set laststatus=2
 
 " mine
 filetype plugin indent on
