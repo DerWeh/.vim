@@ -7,3 +7,9 @@
 [submodule "bundle/ctrlpvim"]
 	path = bundle/ctrlpvim
 	url = https://github.com/ctrlpvim/ctrlp.vim.git
+[submodule "bundle/vim-airline"]
+	path = bundle/vim-airline
+	url = https://github.com/vim-airline/vim-airline
+[submodule "/home/andreas/.vim/bundle/vim-airline-themes"]
+	path = /home/andreas/.vim/bundle/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes

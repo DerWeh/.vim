@@ -83,14 +83,14 @@ let g:tagbar_sort = 0
 " Remove highlight from searchresults
 map <C-n> :nohl<CR>
 
-" Move between windows with Ctrl+[h,j,k,l] 
+" Move between windows with Ctrl+[h,j,k,l]
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
 " Intending codeblocks
-vmap < <gv 
+vmap < <gv
 nmap < <gv
 vmap > >gv
 nmap > >gv
@@ -119,7 +119,7 @@ endif
 
 if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-	\| exe "normal! g'\"" | endif
+    \| exe "normal! g'\"" | endif
 endif
 
 " Convenient command to see the difference between the current buffer and the
@@ -130,7 +130,36 @@ if !exists(":DiffOrig")
             \ | wincmd p | diffthis
 endif
 
-" mine 
+" ariline configuration
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#branch#vcs_priority = ["git"]
+set laststatus=2
+" let g:airline_theme='lucius'
+let g:airline_powerline_fonts = 1
+let g:airline_detect_spell=0
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+" let g:airline_symbols.linenr = '␊'
+" let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+" let g:airline_symbols.paste = 'ρ'
+" let g:airline_symbols.paste = 'Þ'
+" let g:airline_symbols.paste = '∥'
+let g:airline_symbols.paste = 'PASTE'
+let g:airline_symbols.whitespace = 'Ξ'
+let g:airline_symbols.spell = ''
+
+
+" mine
 filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
 set completeopt=menu,preview,longest
