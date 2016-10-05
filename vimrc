@@ -158,6 +158,11 @@ let g:airline_symbols.paste = 'PASTE'
 let g:airline_symbols.whitespace = 'Ξ'
 let g:airline_symbols.spell = ''
 
+" configure SuperTab
+let g:SuperTabLongestEnhanced = 1
+if &omnifunc != ''
+  call SuperTabChain(&omnifunc, "<c-p>")
+endif
 
 " mine
 filetype plugin indent on
