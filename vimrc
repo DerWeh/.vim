@@ -70,12 +70,13 @@ set ignorecase
 set smartcase
 
 
-" store swapfiles in a central location
-set directory=~/.vim/tmp/swap//,.,/var/tmp//,/tmp//
-if !isdirectory(s:vimdir . '/tmp/swap')
-  call mkdir(s:vimdir . '/tmp/swap', 'p')
-endif Install OmniCppComplete like described on http://vim.wikia.com/wiki/C++_code_completion
+"" store swapfiles in a central location
+"set directory=~/.vim/tmp/swap//,.,/var/tmp//,/tmp//
+"if !isdirectory(expand("~") . '/.vim' . '/tmp/swap')
+"  call mkdir(expand("~") . '/.vim' . '/tmp/swap', 'p')
+"endif
 
+"" Install OmniCppComplete like described on http://vim.wikia.com/wiki/C++_code_completion
 "" This offers intelligent C++ completion when typing ‘.’ ‘->’ or <C-o>
 "" Load standard tag files
 "set tags+=~/.vim/tags/cpp
@@ -188,8 +189,30 @@ endif
 set omnifunc=syntaxcomplete#Complete
 set completeopt=menu,preview,longest
 
+"neocomplete
+if index(g:pathogen_disabled, 'neocomplete') == -1
+  " Use neocomplete.
+  let g:neocomplete#enable_at_startup = 1
 
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
+  let g:neocomplete#enable_smart_case = 1
+  let g:neocomplete#auto_completion_start_length = 2
+
+  " increase limit for tag cache files
+  let g:neocomplete#sources#tags#cache_limit_size = 16777216 " 16MB
+
+  " disable for Python
+  "call neocomplete#util#set_default_dictionary(
+  "       \'g:neocomplete#sources#omni#input_patterns',
+  "       \'python',
+  "       \'')
+
+  " <TAB>: completion.
+  inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
+
+  " When a capital letter is matched with the uppercase, but a
+  " lower letter is matched with the upper- and lowercase.
+  let g:neocomplete#enable_camel_case = 1
+
+  let g:neocomplete#enable_auto_delimiter = 1
+endif
+
