@@ -214,5 +214,6 @@ if index(g:pathogen_disabled, 'neocomplete') == -1
   let g:neocomplete#enable_camel_case = 1
 
   let g:neocomplete#enable_auto_delimiter = 1
+  let g:neocomplete#use_vimproc = 1
 endif
 
