@@ -8,10 +8,22 @@ set termencoding=utf-8
 " disable vi compatibility (emulation of old bugs)
 set nocompatible
 
+" set up pathogen
+runtime bundle/pathogen/autoload/pathogen.vim
+if !exists('g:pathogen_disabled')
+  let g:pathogen_disabled = []
+endif
+
+" neocomplete requires Vim 7.3 and Lua
+if v:version < 703 || !has('lua') || (v:version == 703 && !has('patch885'))
+  call add(g:pathogen_disabled, 'neocomplete')
+endif
+
 " enable pathogen for plug-in management
 call pathogen#infect()
 call pathogen#helptags()
 
+filetype plugin indent on
 " use indentation of previous line
 set autoindent
 " use intelligent indentation for C
@@ -58,7 +70,12 @@ set ignorecase
 set smartcase
 
 
-"" Install OmniCppComplete like described on http://vim.wikia.com/wiki/C++_code_completion
+" store swapfiles in a central location
+set directory=~/.vim/tmp/swap//,.,/var/tmp//,/tmp//
+if !isdirectory(s:vimdir . '/tmp/swap')
+  call mkdir(s:vimdir . '/tmp/swap', 'p')
+endif Install OmniCppComplete like described on http://vim.wikia.com/wiki/C++_code_completion
+
 "" This offers intelligent C++ completion when typing ‘.’ ‘->’ or <C-o>
 "" Load standard tag files
 "set tags+=~/.vim/tags/cpp
@@ -168,8 +185,6 @@ if &omnifunc != ''
   call SuperTabChain(&omnifunc, "<c-p>")
 endif
 
-" mine
-filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
 set completeopt=menu,preview,longest
 
