@@ -36,6 +36,8 @@ syntax on
 highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
 
+
+
 "" turn line numbers on
 "set number
 " highlight matching braces
@@ -56,6 +58,10 @@ set incsearch
 set hlsearch
 set ignorecase
 set smartcase
+
+"sometimes increases performance
+set lazyredraw " can lead to problems with splits?
+set ttyfast
 
 
 "" Install OmniCppComplete like described on http://vim.wikia.com/wiki/C++_code_completion
@@ -121,6 +127,7 @@ else
   map <M-Up> [s
 endif
 
+" go to last cursor position upon opening files
 if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
     \| exe "normal! g'\"" | endif
