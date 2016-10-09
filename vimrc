@@ -194,22 +194,20 @@ let g:EasyMotion_smartcase = 1
 let g:EasyMotion_use_smartsign_us = 1
 " }}}
 
-" mine
 set omnifunc=syntaxcomplete#Complete
 set completeopt=menu,preview,longest
-" configure SuperTab
+
+" configure SuperTab {{{
 let g:SuperTabLongestEnhanced = 1
 
 autocmd FileType *
-    echo 'Preset of omnifunc'
-    echo &omnifunc
-    echo '-------------------'
-    if &omnifunc != ''
-      call SuperTabChain(&omnifunc, "<c-p>")
-      call SuperTabSetDefaultCompletionType("<c-x><c-u>")
-    endif
+  \ if &omnifunc != '' |
+  \   call SuperTabChain(&omnifunc, "<c-p>") |
+  \   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
+  \endif
+"}}}
 
-"neocomplete
+"neocomplete {{{
 if index(g:pathogen_disabled, 'neocomplete') == -1
   " Use neocomplete.
   let g:neocomplete#enable_at_startup = 1
@@ -236,4 +234,4 @@ if index(g:pathogen_disabled, 'neocomplete') == -1
   let g:neocomplete#enable_auto_delimiter = 1
   let g:neocomplete#use_vimproc = 1
 endif
-
+"}}}
