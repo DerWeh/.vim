@@ -182,12 +182,16 @@ let g:airline_symbols.spell = ''
 
 " configure SuperTab
 let g:SuperTabLongestEnhanced = 1
-if &omnifunc != ''
-  call SuperTabChain(&omnifunc, "<c-p>")
-endif
-
 set omnifunc=syntaxcomplete#Complete
 set completeopt=menu,preview,longest
+autocmd FileType *
+    echo 'Preset of omnifunc'
+    echo &omnifunc
+    echo '-------------------'
+    if &omnifunc != ''
+      call SuperTabChain(&omnifunc, "<c-p>")
+      call SuperTabSetDefaultCompletionType("<c-x><c-u>")
+    endif
 
 "neocomplete
 if index(g:pathogen_disabled, 'neocomplete') == -1
