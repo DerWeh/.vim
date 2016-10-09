@@ -27,6 +27,7 @@ set softtabstop=4
 set expandtab
 " wrap lines at 120 chars. 80 is somewaht antiquated with nowadays displays.
 "" set textwidth=120
+set foldmethod=marker
 
 " turn syntax highlighting on
 set t_Co=256
@@ -141,7 +142,7 @@ if !exists(":DiffOrig")
             \ | wincmd p | diffthis
 endif
 
-" ariline configuration
+" ariline configuration {{{
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#branch#vcs_priority = ["git"]
 set laststatus=2
@@ -168,7 +169,12 @@ let g:airline_symbols.branch = '⎇'
 let g:airline_symbols.paste = 'PASTE'
 let g:airline_symbols.whitespace = 'Ξ'
 let g:airline_symbols.spell = ''
+"}}}
 
+" easy motion {{{
+let g:EasyMotion_smartcase = 1
+let g:EasyMotion_use_smartsign_us = 1
+" }}}
 
 " mine
 filetype plugin indent on
