@@ -124,7 +124,7 @@ nmap > >gv
 map <F12> <C-]>
 " in diff mode we use the spell check keys for merging
 if &diff
-  ” diff settings
+  " diff settings
   map <M-Down> ]c
   map <M-Up> [c
   map <M-Left> do
