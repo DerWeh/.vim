@@ -250,6 +250,6 @@ if index(g:pathogen_disabled, 'neocomplete') == -1
   " Search from neocomplete, omni candidates, vim keywords.
   let g:neocomplete#fallback_mappings =
     \ ["\<C-x>\<C-o>", "\<C-x>\<C-n>"]
-  " let g:neocomplete#use_vimproc = 1
+  let g:neocomplete#use_vimproc = 1
 endif
 "}}}
