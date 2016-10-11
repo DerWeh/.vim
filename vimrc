@@ -197,15 +197,15 @@ let g:EasyMotion_use_smartsign_us = 1
 set omnifunc=syntaxcomplete#Complete
 set completeopt=menu,preview,longest
 
-" configure SuperTab {{{
-let g:SuperTabLongestEnhanced = 1
+"" configure SuperTab {{{
+"let g:SuperTabLongestEnhanced = 1
 
-autocmd FileType *
-  \ if &omnifunc != '' |
-  \   call SuperTabChain(&omnifunc, "<c-p>") |
-  \   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
-  \endif
-"}}}
+"autocmd FileType *
+"  \ if &omnifunc != '' |
+"  \   call SuperTabChain(&omnifunc, "<c-p>") |
+"  \   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
+"  \endif
+""}}}
 
 "neocomplete {{{
 if index(g:pathogen_disabled, 'neocomplete') == -1
@@ -213,25 +213,43 @@ if index(g:pathogen_disabled, 'neocomplete') == -1
   let g:neocomplete#enable_at_startup = 1
 
   let g:neocomplete#enable_smart_case = 1
+  let g:neocomplete#enable_camel_case = 1
   let g:neocomplete#auto_completion_start_length = 2
 
   " increase limit for tag cache files
   let g:neocomplete#sources#tags#cache_limit_size = 16777216 " 16MB
+  " default: 100, more to get more methods (e.g. np.<TAB>)
+  let g:neocomplete#max_list = 500
 
   " disable for Python
   "call neocomplete#util#set_default_dictionary(
   "       \'g:neocomplete#sources#omni#input_patterns',
   "       \'python',
   "       \'')
+  "
+  "" <TAB>: completion.
+  "inoremap <expr> <Tab> pumvisible() ? '\<C-n>' : '\<Tab>'
+  " For smart TAB completion.
+  inoremap <expr><TAB>  pumvisible() ? "\<C-n>" :
+          \ <SID>check_back_space() ? "\<TAB>" :
+          \ neocomplete#start_manual_complete()
+    function! s:check_back_space() "{{{
+      let col = col('.') - 1
+      return !col || getline('.')[col - 1]  =~ '\s'
+    endfunction"}}}
 
-  " <TAB>: completion.
-  inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
-
-  " When a capital letter is matched with the uppercase, but a
-  " lower letter is matched with the upper- and lowercase.
-  let g:neocomplete#enable_camel_case = 1
-
+  inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" :
+          \ <SID>check_back_space() ? "\<S-TAB>" :
+          \ neocomplete#start_manual_complete()
+    function! s:check_back_space() "{{{
+      let col = col('.') - 1
+      return !col || getline('.')[col - 1]  =~ '\s'
+    endfunction"}}}
   let g:neocomplete#enable_auto_delimiter = 1
-  let g:neocomplete#use_vimproc = 1
+  " let g:neocomplete#enable_auto_select = 1
+  " Search from neocomplete, omni candidates, vim keywords.
+  let g:neocomplete#fallback_mappings =
+    \ ["\<C-x>\<C-o>", "\<C-x>\<C-n>"]
+  " let g:neocomplete#use_vimproc = 1
 endif
 "}}}
