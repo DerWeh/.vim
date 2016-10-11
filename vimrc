@@ -147,7 +147,8 @@ endif
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#branch#vcs_priority = ["git"]
 set laststatus=2
-" let g:airline_theme='lucius'
+"let g:airline_theme='papercolor'
+"let g:lightline = { 'colorscheme': 'PaperColor' }
 let g:airline_powerline_fonts = 1
 let g:airline_detect_spell=0
 
