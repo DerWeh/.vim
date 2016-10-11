@@ -25,14 +25,15 @@ set shiftwidth=4     " indent also with 4 spaces
 set softtabstop=4
 " set noexpandtab        " expand tabs to spaces
 set expandtab
-" wrap lines at 120 chars. 80 is somewaht antiquated with nowadays displays.
+" wrap lines at 120 chars. 80 is somewhat antiquated with nowadays displays.
 "" set textwidth=120
 set foldmethod=marker
 
 " turn syntax highlighting on
 set t_Co=256
 syntax on
-" colorscheme wombat256
+set background=light
+colorscheme PaperColor
 " Show whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
@@ -87,7 +88,7 @@ map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 map <F8> <Esc>:TagbarToggle<CR>
 " Change sorting order to order of appearance in file
 let g:tagbar_sort = 0
-" Remove highlight from searchresults
+" Remove highlight from search results
 map <C-n> :nohl<CR>
 
 " Move between windows with Ctrl+[h,j,k,l]
@@ -142,7 +143,7 @@ if !exists(":DiffOrig")
             \ | wincmd p | diffthis
 endif
 
-" ariline configuration {{{
+" airline configuration {{{
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#branch#vcs_priority = ["git"]
 set laststatus=2
