@@ -4,7 +4,6 @@
 set enc=utf-8
 set fenc=utf-8
 set termencoding=utf-8
-
 " disable vi compatibility (emulation of old bugs)
 set nocompatible
 
@@ -223,7 +222,6 @@ let g:indent_guides_start_level = 1
 " pydocstring {{{
 nmap <silent> <Leader>pd <Plug>(pydocstring)
 "}}}
-
 " mine
 filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
@@ -270,9 +268,10 @@ if index(g:pathogen_disabled, 'neocomplete') == -1
   "    return !col || getline('.')[col - 1]  =~ '\s'
   "  endfunction"}}}
 
-  inoremap <expr><S-TAB>  pumvisible() ? '\<C-p>' :
-          \ <SID>check_back_space() ? '\<S-TAB>' :
+  inoremap <expr><S-TAB>  pumvisible() ? '<C-p>' :
+          \ <SID>check_back_space() ? '<S-TAB>' :
           \ neocomplete#start_manual_complete()
+
     function! s:check_back_space() "{{{
       let col = col('.') - 1
       return !col || getline('.')[col - 1]  =~ '\s'
@@ -289,10 +288,16 @@ if index(g:pathogen_disabled, 'neocomplete') == -1
   \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
   imap <expr><TAB>
-   \ pumvisible() ? "\<C-n>" :
+   \ pumvisible() ? '<C-n>' :
    \ neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" :
+   \ ! <SID>check_back_space() ? neocomplete#start_manual_complete() :
    \ "\<TAB>"
 
+  imap <c-k> <Plug>(neosnippet_expand_or_jump)
+  smap <c-k> <Plug>(neosnippet_expand_or_jump)
+  xmap <c-k> <Plug>(neosnippet_expand_target)
+
+  " let g:neosnippet#enable_completed_snippet=1
   " For conceal markers.
   if has('conceal')
     set conceallevel=2 concealcursor=niv
