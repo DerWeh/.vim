@@ -20,10 +20,10 @@ set smartindent
 " the C indentation standard.
 set cindent
 " configure tabwidth and insert spaces instead of tabs
-set tabstop=4        " tab width is 4 spaces
-set shiftwidth=4     " indent also with 4 spaces
-set softtabstop=4
-" set noexpandtab        " expand tabs to spaces
+set tabstop=2        " tab width is 4 spaces
+set shiftwidth=2     " indent also with 4 spaces
+set softtabstop=2
+" set noexpandtab
 set expandtab
 " wrap lines at 120 chars. 80 is somewhat antiquated with nowadays displays.
 "" set textwidth=120
@@ -37,8 +37,6 @@ colorscheme PaperColor
 " Show whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
-
-
 
 "" turn line numbers on
 "set number
@@ -201,7 +199,7 @@ let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'tagbar']
 let g:indent_guides_default_mapping = 1
-let g:indent_guides_start_level = 2
+let g:indent_guides_start_level = 1
 "}}}
 "
 " mine
