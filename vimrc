@@ -201,7 +201,11 @@ let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'tagbar']
 let g:indent_guides_default_mapping = 1
 let g:indent_guides_start_level = 1
 "}}}
-"
+
+" pydocstring {{{
+nmap <silent> <Leader>pd <Plug>(pydocstring)
+"}}}
+
 " mine
 filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
