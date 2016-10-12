@@ -32,24 +32,23 @@ set smartindent
 " the C indentation standard.
 set cindent
 " configure tabwidth and insert spaces instead of tabs
-set tabstop=4        " tab width is 4 spaces
-set shiftwidth=4     " indent also with 4 spaces
-set softtabstop=4
-" set noexpandtab        " expand tabs to spaces
+set tabstop=2        " tab width is 4 spaces
+set shiftwidth=2     " indent also with 4 spaces
+set softtabstop=2
+" set noexpandtab
 set expandtab
-" wrap lines at 120 chars. 80 is somewaht antiquated with nowadays displays.
+" wrap lines at 120 chars. 80 is somewhat antiquated with nowadays displays.
 "" set textwidth=120
 set foldmethod=marker
 
 " turn syntax highlighting on
 set t_Co=256
 syntax on
-" colorscheme wombat256
+set background=light
+colorscheme PaperColor
 " Show whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
-
-
 
 "" turn line numbers on
 "set number
@@ -105,7 +104,7 @@ map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 map <F8> <Esc>:TagbarToggle<CR>
 " Change sorting order to order of appearance in file
 let g:tagbar_sort = 0
-" Remove highlight from searchresults
+" Remove highlight from search results
 map <C-n> :nohl<CR>
 
 " Move between windows with Ctrl+[h,j,k,l]
@@ -160,11 +159,12 @@ if !exists(":DiffOrig")
             \ | wincmd p | diffthis
 endif
 
-" ariline configuration {{{
+" airline configuration {{{
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#branch#vcs_priority = ["git"]
 set laststatus=2
-" let g:airline_theme='lucius'
+"let g:airline_theme='papercolor'
+"let g:lightline = { 'colorscheme': 'PaperColor' }
 let g:airline_powerline_fonts = 1
 let g:airline_detect_spell=0
 
@@ -192,8 +192,40 @@ let g:airline_symbols.spell = ''
 " easy motion {{{
 let g:EasyMotion_smartcase = 1
 let g:EasyMotion_use_smartsign_us = 1
+
+" Move to line
+map  <Leader><Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader><Leader>f <Plug>(easymotion-overwin-f)
+
+map  <Leader><Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader><Leader>w <Plug>(easymotion-overwin-w)
+
+map  <Leader>/ <Plug>(easymotion-sn)
+omap <Leader>/ <Plug>(easymotion-tn)
+
+" These `n` & `N` mappings are options. You do not have to map `n` & `N` to
+" EasyMotion.
+" " Without these mappings, `n` & `N` works fine. (These mappings just provide
+" " different highlight method and have some other features )
+map  <Leader>n <Plug>(easymotion-next)
+map  <Leader>N <Plug>(easymotion-prev)
 " }}}
 
+" indent guides setting {{{
+let g:indent_guides_color_change_percent = 15
+let g:indent_guides_guide_size = 1
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'tagbar']
+let g:indent_guides_default_mapping = 1
+let g:indent_guides_start_level = 1
+"}}}
+
+" pydocstring {{{
+nmap <silent> <Leader>pd <Plug>(pydocstring)
+"}}}
+
+" mine
+filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
 set completeopt=menu,preview,longest
 
