@@ -206,6 +206,15 @@ let g:indent_guides_start_level = 1
 nmap <silent> <Leader>pd <Plug>(pydocstring)
 "}}}
 
+" supertab {{{
+let g:SuperTabLongestEnhanced = 1
+let g:SuperTabDefaultCompletionType = 'context'
+autocmd FileType *
+  \ if &omnifunc != '' |
+  \   call SuperTabChain(&omnifunc, "<c-p>") |
+  \ endif
+"}}}
+
 " mine
 filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
