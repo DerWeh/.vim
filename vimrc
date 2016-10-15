@@ -4,7 +4,6 @@
 set enc=utf-8
 set fenc=utf-8
 set termencoding=utf-8
-" disable vi compatibility (emulation of old bugs)
 set nocompatible
 
 " set up pathogen
