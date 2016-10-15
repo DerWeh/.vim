@@ -15,6 +15,8 @@ endif
 " neocomplete requires Vim 7.3 and Lua
 if v:version < 703 || !has('lua') || (v:version == 703 && !has('patch885'))
   call add(g:pathogen_disabled, 'neocomplete')
+else
+  call add(g:pathogen_disabled, 'supertab')
 endif
 
 " enable pathogen for plug-in management
@@ -221,22 +223,28 @@ let g:indent_guides_start_level = 1
 " pydocstring {{{
 nmap <silent> <Leader>pd <Plug>(pydocstring)
 "}}}
+
 " mine
 filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
 set completeopt=menu,preview,longest
 
-"" configure SuperTab {{{
-"let g:SuperTabLongestEnhanced = 1
+" supertab {{{
+if index(g:pathogen_disabled, 'supertab') == -1
+  let g:SuperTabLongestEnhanced = 1
+  let g:SuperTabDefaultCompletionType = 'context'
+  autocmd FileType *
+    \ if &omnifunc != '' |
+    \   call SuperTabChain(&omnifunc, "<c-p>") |
+    \ endif
+else
+  " disable supertab default mapping
+  let g:SuperTabMappingForward = ''
+  let g:SuperTabMappingBackward = ''
+endif
+"}}}
 
-"autocmd FileType *
-"  \ if &omnifunc != '' |
-"  \   call SuperTabChain(&omnifunc, "<c-p>") |
-"  \   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
-"  \endif
-""}}}
-
-"neocomplete {{{
+" neocomplete {{{
 if index(g:pathogen_disabled, 'neocomplete') == -1
   " Use neocomplete.
   let g:neocomplete#enable_at_startup = 1

@@ -265,9 +265,7 @@ function! s:DoMappings()
     augroup END
 
     setlocal omnifunc=CompleteIPython
-    " !! my test
     call SuperTabChain(&omnifunc, "<c-p>")
-    " !!!
 endfunction
 
 function! s:GetDocBuffer()
