@@ -1,0 +1,6 @@
+[submodule "supertab"]
+    path = bundle/supertab
+    url = https://github.com/ervandew/supertab
+[submodule "papercolor-theme"]
+    path = bundle/papercolor-theme
+    url = https://github.com/NLKNguyen/papercolor-theme
