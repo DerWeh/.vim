@@ -311,3 +311,7 @@ if index(g:pathogen_disabled, 'neocomplete') == -1
   endif
 endif
 "}}}
+
+" colorize {{{
+let g:colorizer_maxlines = 800
+"}}}
