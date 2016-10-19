@@ -15,8 +15,8 @@ endif
 " neocomplete requires Vim 7.3 and Lua
 if v:version < 703 || !has('lua') || (v:version == 703 && !has('patch885'))
   call add(g:pathogen_disabled, 'neocomplete')
-else
-  call add(g:pathogen_disabled, 'supertab')
+"else
+"  call add(g:pathogen_disabled, 'supertab')
 endif
 
 " enable pathogen for plug-in management
@@ -230,7 +230,8 @@ set omnifunc=syntaxcomplete#Complete
 set completeopt=menu,preview,longest
 
 " supertab {{{
-if index(g:pathogen_disabled, 'supertab') == -1
+" only use supertab if neocomplete is not working
+if index(g:pathogen_disabled, 'neocomplete') != -1
   let g:SuperTabLongestEnhanced = 1
   let g:SuperTabDefaultCompletionType = 'context'
   autocmd FileType *
@@ -239,8 +240,8 @@ if index(g:pathogen_disabled, 'supertab') == -1
     \ endif
 else
   " disable supertab default mapping
-  let g:SuperTabMappingForward = ''
-  let g:SuperTabMappingBackward = ''
+  let g:SuperTabMappingForward = '<Nop>'
+  let g:SuperTabMappingBackward = '<Nop>'
 endif
 "}}}
 
