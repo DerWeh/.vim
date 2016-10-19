@@ -47,7 +47,7 @@ syntax on
 set background=light
 colorscheme PaperColor
 " Show whitespace
-highlight ExtraWhitespace ctermbg=red guibg=red
+highlight ExtraWhitespace ctermbg=Magenta guibg=#ffafd7
 au InsertLeave * match ExtraWhitespace /\s\+$/
 
 "" turn line numbers on
@@ -313,5 +313,5 @@ endif
 "}}}
 
 " colorize {{{
-let g:colorizer_maxlines = 800
+"let g:colorizer_maxlines = 800
 "}}}
