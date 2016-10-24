@@ -405,11 +405,21 @@ endfun
 
 " Custom folding function to fold cells
 function! FoldByCell(lnum)
+    " let level = indent(a:linenum) / &shiftwidth
     let pattern = '\v^\s*(##|' . escape('# <codecell>', '<>') . ').*$'
+    let custop = '\v\{\{\{$'
+    let custclose = '\v}}}$'
     if getline(a:lnum) =~? pattern
         return '>1'
     elseif getline(a:lnum+1) =~? pattern
         return '<1'
+    elseif getline(a:lnum) =~? custop
+        "return '>' . string(indent(a:lnum) / &shiftwidth + 1)
+        return '<1'
+    elseif getline(a:lnum) =~? custclose
+        return '<1'
+    "elseif getline(a:lnum) =~? '\v^\s*$'
+    "    return '='
     else
         return '='
     endif
