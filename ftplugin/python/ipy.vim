@@ -414,7 +414,7 @@ function! FoldByCell(lnum)
     elseif getline(a:lnum+1) =~? pattern
         return '<1'
     elseif getline(a:lnum) =~? custop
-        "return '>' . string(indent(a:lnum) / &shiftwidth + 1)
+        " return '>' . string(indent(a:lnum) / &shiftwidth + 1)
         return '>1'
     elseif getline(a:lnum) =~? custclose
         return '<1'
